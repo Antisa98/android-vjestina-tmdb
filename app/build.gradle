@@ -60,6 +60,7 @@ dependencies {
 
     implementation "androidx.activity:activity-compose:1.6.1"
     implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation("io.coil-kt:coil:2.2.2")
 
     debugImplementation "androidx.compose.ui:ui-test-manifest:"
     debugImplementation "androidx.compose.ui:ui-tooling:"
