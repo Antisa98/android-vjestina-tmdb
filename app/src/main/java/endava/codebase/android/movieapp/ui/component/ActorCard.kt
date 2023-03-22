@@ -6,21 +6,16 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
-import endava.codebase.android.movieapp.mock.MoviesMock
-import endava.codebase.android.movieapp.model.Actor
+import coil.compose.rememberAsyncImagePainter
 
-data class Actor(
+data class ActorCardViewState(
     val id: Int,
     val imageUrl: String,
     val name: String,
@@ -29,7 +24,7 @@ data class Actor(
 
 @Composable
 fun ActorCard(
-    actorCardViewState: Actor,
+    actorCardViewState: ActorCardViewState,
     modifier: Modifier = Modifier,
 ) {
     Card(
@@ -43,14 +38,25 @@ fun ActorCard(
             modifier = Modifier.fillMaxSize()
         ) {
             Image(
-                painter = rememberImagePainter(data = actorCardViewState.imageUrl),
+                painter = rememberAsyncImagePainter(model = actorCardViewState.imageUrl),
                 contentDescription = "Actor",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(200.dp,220.dp)
-                )
+                modifier = Modifier.size(200.dp, 220.dp)
+            )
 
-            Text(text = actorCardViewState.name, fontSize = 20.sp, maxLines = 2,fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 10.dp, start = 10.dp))
-            Text(text = actorCardViewState.character, fontSize = 15.sp, color = Color.Gray, modifier = Modifier.padding(top = 10.dp, start = 10.dp))
+            Text(
+                text = actorCardViewState.name,
+                fontSize = 20.sp,
+                maxLines = 2,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 10.dp, start = 10.dp)
+            )
+            Text(
+                text = actorCardViewState.character,
+                fontSize = 15.sp,
+                color = Color.Gray,
+                modifier = Modifier.padding(top = 10.dp, start = 10.dp)
+            )
         }
     }
 }
@@ -58,5 +64,12 @@ fun ActorCard(
 @Preview
 @Composable
 private fun ActorCardPreview() {
-    ActorCard(MoviesMock.getActor())
+    ActorCard(
+        ActorCardViewState(
+            id = 1,
+            name = "Robert Downey Jr.",
+            character = "Tony Stark/Iron Man",
+            imageUrl = "https://www.themoviedb.org/t/p/w200/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+        )
+    )
 }
