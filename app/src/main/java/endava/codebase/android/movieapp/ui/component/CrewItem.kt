@@ -9,7 +9,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 data class CrewmanViewState(
@@ -25,11 +24,16 @@ fun CrewmanView(
 ) {
     Surface(
         shape = RectangleShape,
-        color = Color.White
+        color = Color.White,
+        modifier = modifier
     ) {
-        Column(
-        ) {
-            Text(text = crewmanViewState.name, fontSize = 20.sp, maxLines = 2,fontWeight = FontWeight.Bold)
+        Column {
+            Text(
+                text = crewmanViewState.name,
+                fontSize = 20.sp,
+                maxLines = 2,
+                fontWeight = FontWeight.Bold
+            )
             Text(text = crewmanViewState.jobTitle, fontSize = 20.sp, color = Color.Black)
         }
     }

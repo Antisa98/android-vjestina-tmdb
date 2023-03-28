@@ -1,45 +1,46 @@
 package endava.codebase.android.movieapp.ui.component
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material.Checkbox
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import endava.codebase.android.movieapp.R
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
+
 
 @Composable
 fun FavoriteButton(
     isFavorite: Boolean,
-    onCheckedChange: (Boolean) -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Box(contentAlignment = Alignment.TopStart) {
-        Box(contentAlignment = Alignment.Center) {
-            Checkbox(
-                checked = isFavorite,
-                onCheckedChange = onCheckedChange,
-                modifier = Modifier.alpha(0f)
-            )
-            Image(
-                painterResource(if (isFavorite) R.drawable.favorite_full else R.drawable.favorite_empty),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
-
-        }
+    Box(
+    ) {
+        Image(
+            painterResource(if (isFavorite) R.drawable.favorite_full else R.drawable.favorite_empty),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = modifier
+                .clickable { onClick() }
+                .size(50.dp, 50.dp)
+                .align(Alignment.TopStart)
+        )
     }
 }
 
 @Preview
 @Composable
 private fun FavoriteButtonPreview() {
-    val isChecked = remember { mutableStateOf(false) }
-
-    FavoriteButton(isFavorite = isChecked.value, onCheckedChange = { isChecked.value = it })
+    var isFavorite = remember { mutableStateOf(false) }
+    FavoriteButton(
+        isFavorite = isFavorite.value,
+        onClick = { isFavorite.value = !isFavorite.value })
 }

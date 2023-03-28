@@ -1,6 +1,5 @@
 package endava.codebase.android.movieapp.ui.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -13,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 
 data class ActorCardViewState(
     val id: Int,
@@ -28,7 +27,7 @@ fun ActorCard(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        Modifier.size(width = 200.dp, height = 330.dp),
+        modifier = modifier,
         backgroundColor = Color.White,
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp
@@ -37,25 +36,22 @@ fun ActorCard(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(model = actorCardViewState.imageUrl),
-                contentDescription = "Actor",
+            AsyncImage(model = actorCardViewState.imageUrl, contentDescription = "Actor",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(200.dp, 220.dp)
-            )
+                modifier = Modifier.fillMaxWidth().height(200.dp))
 
             Text(
                 text = actorCardViewState.name,
                 fontSize = 20.sp,
                 maxLines = 2,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 10.dp, start = 10.dp)
+                modifier = Modifier.padding(all = 10.dp)
             )
             Text(
                 text = actorCardViewState.character,
                 fontSize = 15.sp,
                 color = Color.Gray,
-                modifier = Modifier.padding(top = 10.dp, start = 10.dp)
+                modifier = Modifier.padding(all = 10.dp)
             )
         }
     }
@@ -70,6 +66,6 @@ private fun ActorCardPreview() {
             name = "Robert Downey Jr.",
             character = "Tony Stark/Iron Man",
             imageUrl = "https://www.themoviedb.org/t/p/w200/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
-        )
+        ), modifier = Modifier.size(width = 200.dp, height = 330.dp)
     )
 }
