@@ -22,18 +22,11 @@ fun FavoriteButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Box(
-    ) {
-        Image(
-            painterResource(if (isFavorite) R.drawable.favorite_full else R.drawable.favorite_empty),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            modifier = modifier
-                .clickable { onClick() }
-                .size(50.dp, 50.dp)
-                .align(Alignment.TopStart)
-        )
-    }
+    Image(
+        painterResource(if (isFavorite) R.drawable.favorite_full else R.drawable.favorite_empty),
+        contentDescription = "",
+        contentScale = ContentScale.Crop,
+    )
 }
 
 @Preview

@@ -26,13 +26,19 @@ fun UserScoreProgressBar(
     size: Int,
     modifier: Modifier = Modifier
 ) {
-    Box(contentAlignment = Alignment.Center)
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    )
     {
         val tempGrade: String = grade.toString()
-        Text(text = tempGrade, color = Color.Green, fontWeight = FontWeight.Bold, fontSize = (size/5).sp)
-        Canvas(
-            modifier
-        ) {
+        Text(
+            text = tempGrade,
+            color = Color.Green,
+            fontWeight = FontWeight.Bold,
+            fontSize = (size / 5).sp
+        )
+        Canvas(modifier = Modifier) {
             drawArc(
                 color = Color.LightGray,
                 startAngle = 180f,

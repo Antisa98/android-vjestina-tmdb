@@ -45,13 +45,13 @@ fun ActorCard(
                 fontSize = 20.sp,
                 maxLines = 2,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(all = 10.dp)
+                modifier = Modifier.padding(horizontal = 10.dp)
             )
             Text(
                 text = actorCardViewState.character,
                 fontSize = 15.sp,
                 color = Color.Gray,
-                modifier = Modifier.padding(all = 10.dp)
+                modifier = Modifier.padding(horizontal = 10.dp)
             )
         }
     }
