@@ -26,6 +26,7 @@ fun FavoriteButton(
         painterResource(if (isFavorite) R.drawable.favorite_full else R.drawable.favorite_empty),
         contentDescription = "",
         contentScale = ContentScale.Crop,
+        modifier = modifier.clickable { onClick() }
     )
 }
 
