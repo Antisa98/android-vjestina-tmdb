@@ -30,11 +30,15 @@ fun CrewmanView(
         Column {
             Text(
                 text = crewmanViewState.name,
-                fontSize = 20.sp,
+                fontSize = 15.sp,
                 maxLines = 2,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
-            Text(text = crewmanViewState.jobTitle, fontSize = 20.sp, color = Color.Black)
+            Text(
+                text = crewmanViewState.jobTitle,
+                fontSize = 15.sp,
+                color = Color.Black,
+            )
         }
     }
 }

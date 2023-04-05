@@ -16,7 +16,7 @@ import coil.compose.AsyncImage
 
 data class ActorCardViewState(
     val id: Int,
-    val imageUrl: String,
+    val imageUrl: String?,
     val name: String,
     val character: String,
 )
@@ -38,18 +38,18 @@ fun ActorCard(
         ) {
             AsyncImage(model = actorCardViewState.imageUrl, contentDescription = "Actor",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth().height(200.dp))
+                modifier = Modifier.fillMaxWidth().height(125.dp))
 
             Text(
                 text = actorCardViewState.name,
-                fontSize = 20.sp,
+                fontSize = 15.sp,
                 maxLines = 2,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 10.dp)
             )
             Text(
                 text = actorCardViewState.character,
-                fontSize = 15.sp,
+                fontSize = 10.sp,
                 color = Color.Gray,
                 modifier = Modifier.padding(horizontal = 10.dp)
             )
@@ -66,6 +66,6 @@ private fun ActorCardPreview() {
             name = "Robert Downey Jr.",
             character = "Tony Stark/Iron Man",
             imageUrl = "https://www.themoviedb.org/t/p/w200/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
-        ), modifier = Modifier.size(width = 200.dp, height = 330.dp)
+        ), modifier = Modifier.size(width = 130.dp, height = 180.dp)
     )
 }
