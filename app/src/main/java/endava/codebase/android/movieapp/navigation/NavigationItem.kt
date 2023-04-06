@@ -1,7 +1,7 @@
 package endava.codebase.android.movieapp.navigation
 
-import MovieAppDestination
 import endava.codebase.android.movieapp.R
+
 
 const val HOME_ROUTE = "Home"
 const val FAVORITES_ROUTE = "Favorites"
@@ -24,3 +24,5 @@ sealed class NavigationItem(
         labelId = R.string.favorites,
     )
 }
+
+
