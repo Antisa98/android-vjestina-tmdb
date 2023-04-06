@@ -40,11 +40,13 @@ fun MovieCard(
                 .fillMaxWidth()
                 .height(220.dp)
         )
-        FavoriteButton(
-            isFavorite = movieCardViewState.isFavorite,
-            onClick,
-            modifier = Modifier.padding(16.dp)
-        )
+        Box(contentAlignment = Alignment.TopStart) {
+            FavoriteButton(
+                isFavorite = movieCardViewState.isFavorite,
+                onClick,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
     }
 
 }
